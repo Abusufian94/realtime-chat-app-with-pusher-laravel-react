@@ -33,15 +33,32 @@ Make sure you have:
 - **Redis** server (for queues)
 - A **Pusher** account + app (for WebSockets)
 
-Optional but recommended:
+## 2. Setup 
+- **laravel react starter kit** : https://laravel.com/docs/12.x/starter-kits#react
+-    It will give signup, login and dashboard using react immidiately 
+- **Run migration command** :  php artisan migrate
+- **Install & Configure  Redis**  :  sudo apt install redis-server
+    - *Enable Redis*:  sudo systemctl enable redis-server
+    - *Start Redis  Server* : sudo systemctl start redis-server
+    - *Check Redis* : redis-cli ping (it will give output as pong)
 
-- Git (for workflow & versioning)
+- **Install Laravel Pusher** : npm install laravel-echo pusher-js
+- **Install Brodcast** :  php artisan install:brodcasting
+- **Migration Message Table**: php artisan make:migration create_messages_table
+- **Create Message Model**: php artisan make:model Message
+- **Install Api**: php artisan install:api
+- **Make Message API Controller**: php artisan make:controller Api/MessageController
+- **Create Validation Request(Form Validate)**: php artisan make:request StoreMessageRequest
+- **Create Message Event** : php artisan make:event MessageReceived
+- **Create Job** : php artisan make:job ProcessMessageJob
+- **Make Web MessageController** : php artisan make:controller MessagesPageController
 
----
+## 3. Run Server 
+- **Run Web vite and local server**: composer run dev
 
-## 2. Installation
 
-### 2.1. Clone the repository
+
+## 4. Clone th Project  repository
 
 ```bash
 git clone <your-repo-url> realtime-notify
