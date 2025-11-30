@@ -22,6 +22,11 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
+    {
+        title: 'Messages',
+        href: '/messages',
+        icon: Folder,
+    }
 ];
 
 const footerNavItems: NavItem[] = [
@@ -47,7 +52,11 @@ export function AppSidebar() {
                             <Link href={dashboard()} prefetch>
                                 <AppLogo />
                             </Link>
+                            
+                            
                         </SidebarMenuButton>
+                        
+                        
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>

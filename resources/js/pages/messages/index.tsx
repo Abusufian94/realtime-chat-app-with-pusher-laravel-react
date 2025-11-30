@@ -7,7 +7,9 @@ import React, {
 } from 'react';
 import { Head, usePage } from '@inertiajs/react';
 import axios from 'axios';
-
+import AppLayout from '@/layouts/app-layout';
+import { type BreadcrumbItem } from '@/types';
+import { dashboard, messages as messagesRoute } from '@/routes';
 type Message = {
     id: number;
     sender_id: number;
@@ -22,7 +24,21 @@ type PageProps = {
     user: { id: number; name: string; email: string };
 };
 
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Dashboard',
+        href: dashboard().url,
+    },
+    {
+        title: 'Messages',
+        href: messagesRoute().url,
+    },
+];
+
+
 export default function MessagesIndex() {
+    
+
     const { props } = usePage<PageProps>();
     const currentUser = props.user;
 
@@ -219,9 +235,9 @@ useEffect(() => {
     };
 
     return (
-        <>
-            <Head title="Real-Time Messages" />
-
+        <AppLayout  breadcrumbs={breadcrumbs}>
+        <Head title="Real-Time Messages" />
+           
             {/* Toast for unread messages */}
             {unreadCount > 0 && (
                 <div className="fixed right-4 top-16 z-30">
@@ -309,6 +325,6 @@ useEffect(() => {
                     </button>
                 </form>
             </div>
-        </>
+       </AppLayout>
     );
 }
